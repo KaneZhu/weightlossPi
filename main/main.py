@@ -3,7 +3,7 @@ import numpy as np
 
 #structing element with 3*3 elements
 kernel = cv2.getStructuringElement(cv2.MORPH_RECT,(5,5))
-code=0
+code='0'
 img = cv2.imread("3.jpg",0)	#change grey
 res = cv2.resize(img,None,fx=.3,fy=.3,interpolation=cv2.INTER_CUBIC)
 # res = cv2.cvtColor(res,cv2.COLOR_BGR2GRAY)  #change grey, however 'img = cv2.imread("2.jpg",0)'has changed
@@ -109,7 +109,7 @@ k = 0
 for i in range(1,59):   
     k = k + bar_sum[i]
 
-k = k/95   
+k = k/95   git
 for i in range(1,59): 
     bar_int[i] = round(bar_sum[i]/k)
 
