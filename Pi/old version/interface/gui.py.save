@@ -1,0 +1,91 @@
+import Tkinter as tk
+import picamera as pc
+# class Void (tk.Tk) :
+#     def __init__ (self, color='black') :
+#         tk.Tk.__init__(self)
+#         self.wm_state('zoomed')
+#         self.config(bg=color)
+#         self.overrideredirect(True)
+#         self.attributes('-topmost', True)
+
+# class FullScreenApp(object):
+#     def __init__(self, master, **kwargs):
+#         self.master=master
+#         pad=3
+#         self._geom='200x200+0+0'
+#         master.geometry("{0}x{1}+0+0".format(
+#             master.winfo_screenwidth()-pad, master.winfo_screenheight()-pad))
+#         master.bind('<Escape>',self.toggle_geom)    
+#         master.overrideredirect(True)        
+#         master.config(bg='black')
+    
+#     def toggle_geom(self,event):
+#         geom=self.master.winfo_geometry()
+#         print(geom,self._geom)
+#         self.master.geometry(self._geom)
+#         self._geom=geom
+
+
+
+    
+#     def __init__ (self, color='black') :
+#         tk.Tk.__init__(self)
+#         self.wm_state('zoomed')
+#         self.config(bg=color)
+#         self.overrideredirect(True)
+#         self.attributes('-topmost', True)       
+
+
+
+class Application(tk.Frame):
+    def __init__(self, master=None):
+        tk.Frame.__init__(self, master)
+        self.pack()
+        self.createWidgets()
+	self.createWidget2()
+        self.master=master
+        pad=3
+        self._geom='200x200+0+0'
+        master.geometry("{0}x{1}+0+0".format(
+            master.winfo_screenwidth()-pad, master.winfo_screenheight()-pad))
+        master.bind('<Escape>',self.toggle_geom)    
+        master.overrideredirect(True)        
+        master.config(bg='black')
+    
+    def toggle_geom(self,event):
+        geom=self.master.winfo_geometry()
+        print(geom,self._geom)
+        self.master.geometry(self._geom)
+        self._geom=geom
+
+    def createWidgets(self):
+        self.hi_there = tk.Button(self)
+        self.QUIT = tk.Button(self, text="QUIT", fg="red",
+                                            command=root.destroy)
+       	self.pack()  
+        self.pack(side = "top", fill="both", expand=True)
+        # self.pack(expand = 0)
+        self.QUIT.pack(side="left")
+
+
+        # self["geometry"] = "200x100"
+
+    def createWidget2(self):
+        self.hi_there = tk.Button(self)
+        self.QUIT = tk.Button(self, text="camera start", fg="red",
+                                            command=callback_preview)
+        self.pack()
+        self.pack(side = "top", fill="both", expand=True)
+        # self.pack(expand = 0)
+        self.QUIT.pack(side="bottom")
+
+   def callback_preview(self):
+	pc.PIcamera.preview_fullscreen=False
+	cameCa.preview_window=(0,0,320,200)
+	camera.resolution=(320,200)
+	camera.start_preview()
+root = tk.Tk()
+app = Application(master=root)
+app.mainloop()
+
+
